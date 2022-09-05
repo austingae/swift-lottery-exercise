@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var credits = 0
+    @State private var credits = 1000
     @State private var leftSlot = "apple"
     @State private var middleSlot = "apple"
     @State private var rightSlot = "apple"
     @State private var gameStatus = ""
+    
+    @State private var isSpinButtonDisabled = false
     
     func randomlySelectFruits() {
         for i in 1...3 {
@@ -41,6 +43,7 @@ struct ContentView: View {
             
             if (credits < 0) {
                 gameStatus = "Game Over"
+                isSpinButtonDisabled = true
             }
         }
     }
@@ -65,7 +68,6 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100)
 
-                
                 Spacer()
                 
                 Image(rightSlot)
@@ -88,6 +90,7 @@ struct ContentView: View {
             }).padding(.all, 16.0)
               .foregroundColor(.white)
               .background(.pink)
+              .disabled(isSpinButtonDisabled)
             
             
             Spacer()
