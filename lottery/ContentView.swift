@@ -8,39 +8,51 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var credits = 1000
+    @State private var leftSlot = "apple"
+    @State private var middleSlot = "apple"
+    @State private var rightSlot = "apple"
+    
     var body: some View {
         VStack {
             Spacer()
             Text("Fruit Roll Lottery")
             Spacer()
-            Text("Credits: 1000")
+            Text("Credits: " + String(credits))
             Spacer()
             HStack {
                 Spacer()
-                Image("apple")                  .resizable()
+                Image(leftSlot)               .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 200)
+                    .frame(width: 100, height: 100)
                 
                 Spacer()
                 
-                Image("cherry")
+                Image(middleSlot)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 200)
+                    .frame(width: 100, height: 100)
+
                 
                 Spacer()
                 
-                Image("star")
+                Image(rightSlot)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 200)
+                    .frame(width: 100, height: 100)
                 Spacer()
             }
+            
+            Spacer()
+            
             Button(action: {
                 
             }, label: {
                 Text("Spin")
-            })
+            }).padding(.all, 16.0)
+              .foregroundColor(.white)
+              .background(.pink)
+            
             
             Spacer()
         }
